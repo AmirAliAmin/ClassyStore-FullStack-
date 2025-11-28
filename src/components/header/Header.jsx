@@ -82,19 +82,18 @@ function Header() {
                     4
                   </span>
                 </Link>
-                <div className="hidden group-hover:block absolute bg-[#070707ba] px-7 py-1 rounded-lg  text-white mt-2  text-xs group-hover:transition-all duration-500">
+                <div className="hidden  group-hover:block absolute bg-[#070707ba] px-7 py-1 rounded-lg  text-white mt-2 right-0.5   text-xs group-hover:transition-all duration-500">
                   Compare
                 </div>
               </li>
               <li className="list-none text-[#3E3E3E] relative group">
                 <Link className="link text-[16px] flex items-center relative">
-                  <FaRegHeart className="text-[20px]" />{" "}
+                  <FaRegHeart className="text-[20px]" />
                   <span className="absolute bg-primary w-4 h-4 rounded-full -right-2 -top-2 flex justify-center items-center text-white text-xs">
                     4
                   </span>
                 </Link>
-                <div className="hidden group-hover:block absolute bg-[#070707ba]  px-7 py-1 rounded-lg  text-white mt-2  text-xs group-hover:transition-all duration-500">
-                  {" "}
+                <div className="hidden group-hover:block absolute bg-[#070707ba]  px-7 py-1 rounded-lg  text-white mt-2 right-0.5 text-xs group-hover:transition-all duration-500">
                   WishList
                 </div>
               </li>
@@ -105,7 +104,7 @@ function Header() {
                     4
                   </span>
                 </Link>
-                <div className="hidden group-hover:block absolute bg-[#070707ba] px-7 py-1 rounded-lg  text-white mt-2  text-xs group-hover:transition-all duration-500">
+                <div className="hidden group-hover:block absolute bg-[#070707ba] px-7 py-1 rounded-lg  text-white mt-2 right-0.5  text-xs group-hover:transition-all duration-500">
                   Cart
                 </div>
               </li>
