@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaRegHeart } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
@@ -6,8 +6,22 @@ import { GoGitCompare } from "react-icons/go";
 import { BsArrowsFullscreen } from "react-icons/bs";
 import { TiStar } from "react-icons/ti";
 import { GoStar } from "react-icons/go";
+import { AppContext } from '../../context/AppContext';
 
 function ProductCard({ id,name,brand,price,original,discount,category,image }) {
+
+  const {
+    openProductDetailModel,setOpenProductDetailModel,
+        selectedProductCard,setSelectedProductCard,
+        hnadleClickOpenProductDeatailModel,handleCloseOpenProductDeatailModel
+  } = useContext(AppContext);
+
+   const handleQuickViewClick = ()=>{
+    setImageData(image[0]);
+    const productCardData ={id,name,brand,price,original,discount,category,image};
+    hnadleClickOpenProductDeatailModel(productCardData)
+   }
+ 
   return (
     <div>
         <div className='border border-gray-300 rounded-lg shadow'>
@@ -18,7 +32,7 @@ function ProductCard({ id,name,brand,price,original,discount,category,image }) {
             </Link>
             <p className='absolute bg-primary text-white top-2 left-2 rounded-full w-7 flex items-center justify-center h-7 text-xs'>{discount}%</p>
             <div className='absolute -top-25 group-hover:top-2 right-5  flex-col flex gap-2  transition-all duration-500 z-10'>
-              <div className='w-7 h-7 bg-white text-black flex items-center justify-center rounded-full hover:bg-primary hover:text-white cursor-pointer'>
+              <div className='w-7 h-7 bg-white text-black flex items-center justify-center rounded-full hover:bg-primary hover:text-white cursor-pointer' onClick={handleQuickViewClick}>
                 <BsArrowsFullscreen/>
               </div>
               <div className='w-7 h-7 bg-white text-black flex items-center justify-center rounded-full hover:bg-primary hover:text-white cursor-pointer'>
@@ -42,6 +56,29 @@ function ProductCard({ id,name,brand,price,original,discount,category,image }) {
             <button className='w-full border border-primary mt-2 py-2 text-primary rounded-lg text-xs flex items-center text-center justify-center gap-1 cursor-pointer hover:bg-primary hover:text-white'><IoCartOutline className='text-xl'/> ADD TO CART</button>
             </div>
         </div>
+        {
+          openProductDetailModel &&  (
+            <div className='fixed inset-0 bg-[#00000007] flex items-center justify-center z-500' onClick={handleCloseOpenProductDeatailModel}>
+              <div className='bg-white  h-fit sm:w-[50%] w-full max-w-2xl rounded-lg max-h-screen overflow-y-auto' onClick={(e)=> e.stopPropagation()}>
+                {
+                  selectedProductCard && (
+                <div className='p-6'>
+                  <div className='flex gap-4'>
+                   <div>
+                    <img src={selectedProductCard.image[0]} alt="not" />
+                   </div>
+                   <div>
+                    
+                   </div>
+                  </div>
+                </div>
+
+                  )
+                }
+              </div>
+            </div>
+          )
+        }
     </div>
   )
 }

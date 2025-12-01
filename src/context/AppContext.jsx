@@ -1,10 +1,24 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const AppContext = createContext();
 
 const AppContextProvider = (prop)=>{
-    const value = {
+    const [openProductDetailModel, setOpenProductDetailModel] = useState(false);
+     const [selectedProductCard, setSelectedProductCard] = useState(null);
 
+    const hnadleClickOpenProductDeatailModel = (card)=>{
+        setSelectedProductCard(card)
+        setOpenProductDetailModel(true);
+    }
+
+    const handleCloseOpenProductDeatailModel = ()=>{
+        setOpenProductDetailModel(false);
+        setSelectedProductCard(null)
+    }
+    const value = {
+        openProductDetailModel,setOpenProductDetailModel,
+        selectedProductCard,setSelectedProductCard,
+        hnadleClickOpenProductDeatailModel,handleCloseOpenProductDeatailModel
     }
     return (
         <AppContext.Provider value={value}>
