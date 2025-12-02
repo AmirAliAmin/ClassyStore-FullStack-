@@ -123,7 +123,8 @@ export const assets ={
     fashion,electronic,bags,footwear,groceries,beauty,wellness,jewellery,
     adBanner1,adBanner2,adBanner3,adBanner4,
     ads1,ads2,ads3,ads4,
-    mastercard,aamerican_express,visa,carte_bleue
+    mastercard,aamerican_express,visa,carte_bleue,
+    FashionImage1
 }
 
 export const cartSlider = [

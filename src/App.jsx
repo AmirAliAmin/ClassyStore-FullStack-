@@ -7,10 +7,11 @@ import Footer from "./components/footer/Footer";
 import ProductDetails from "./pages/products/ProductDetails";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import Cart from "./pages/cart/Cart";
 
 function App() {
   return (
-    <div className="">
+    <div className="relative">
       <div className="pb-45.5">
         <Header />
       </div>
@@ -20,6 +21,7 @@ function App() {
         <Route path="product/:id" element={<ProductDetails/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/cart" element={<Cart/>}/>
       </Routes>
       <Footer />
     </div>

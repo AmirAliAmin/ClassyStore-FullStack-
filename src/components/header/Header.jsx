@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "../search/Search";
 import { FaRegHeart } from "react-icons/fa";
@@ -9,10 +9,13 @@ import { RxCross1 } from "react-icons/rx";
 import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
 import { RiMenu2Line } from "react-icons/ri";
+import { AppContext } from "../../context/AppContext";
+import CartDrawer from "../cart/CartDrawer";
 
 function Header() {
   const [boxOpen, setBoxOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(null);
+  const {openCartPanel,setOpenCartPanel,toggleDrawer} = useContext(AppContext)
   return (
     <header className="bg-white fixed z-500 w-full">
       <div className="top-strip py-2 border-t border-b border-gray-200 text-[#3E3E3E]">
@@ -98,7 +101,7 @@ function Header() {
                 </div>
               </li>
               <li className="list-none text-[#3E3E3E] relative group">
-                <Link className="link text-[16px] flex items-center relative">
+                <Link className="link text-[16px] flex items-center relative" onClick={()=>setOpenCartPanel(!openCartPanel)}>
                   <IoCartOutline className="text-[25px]" />{" "}
                   <span className="absolute bg-primary w-4 h-4 rounded-full -right-2 -top-2 flex justify-center items-center text-white text-xs">
                     4
@@ -112,6 +115,11 @@ function Header() {
           </div>
         </div>
       </div>
+      {
+        openCartPanel && (
+          <CartDrawer/>
+        )
+      }
       <Navbar setBoxOpen={setBoxOpen} boxOpen={boxOpen} />
       {boxOpen && (
         <div
