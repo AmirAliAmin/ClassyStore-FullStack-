@@ -5,7 +5,8 @@ export const AppContext = createContext();
 const AppContextProvider = (props) => {
   const [openProductDetailModel, setOpenProductDetailModel] = useState(false);
   const [selectedProductCard, setSelectedProductCard] = useState(null);
-  const [openCartPanel, setOpenCartPanel] = useState(false)
+  const [openCartPanel, setOpenCartPanel] = useState(false);
+  const [isLogin, setIsLogin] = useState(false)
 
   // Fixed function names (removed typos)
   const handleClickOpenProductDetailModel = (card) => {
@@ -29,7 +30,8 @@ const AppContextProvider = (props) => {
     setSelectedProductCard,
     handleClickOpenProductDetailModel,  
     handleCloseOpenProductDetailModel,
-    openCartPanel,setOpenCartPanel,toggleDrawer
+    openCartPanel,setOpenCartPanel,toggleDrawer,
+    isLogin,setIsLogin
   }
 
   return (

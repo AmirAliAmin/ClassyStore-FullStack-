@@ -8,10 +8,15 @@ import ProductDetails from "./pages/products/ProductDetails";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Cart from "./pages/cart/Cart";
+import Verify from "./pages/auth/Verify";
+import toast, { Toaster } from 'react-hot-toast';
+import ForgetPassword from "./pages/auth/ForgetPassword";
+import Checkout from "./pages/cart/Checkout";
 
 function App() {
   return (
     <div className="relative">
+      <div><Toaster/></div>
       <div className="pb-45.5">
         <Header />
       </div>
@@ -22,6 +27,9 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/verifyAccount" element={<Verify/>} />
+        <Route path="/forgetpassword" element={<ForgetPassword/>} />
+        <Route path="/checkout" element={<Checkout/>} />
       </Routes>
       <Footer />
     </div>

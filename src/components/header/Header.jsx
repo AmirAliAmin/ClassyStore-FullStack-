@@ -11,11 +11,15 @@ import { CiSquareMinus } from "react-icons/ci";
 import { RiMenu2Line } from "react-icons/ri";
 import { AppContext } from "../../context/AppContext";
 import CartDrawer from "../cart/CartDrawer";
+import { FaRegUserCircle } from "react-icons/fa";
+import { IoBagHandleSharp } from "react-icons/io5";
+import { FaThList } from "react-icons/fa";
+import { HiOutlineLogout } from "react-icons/hi";
 
 function Header() {
   const [boxOpen, setBoxOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(null);
-  const {openCartPanel,setOpenCartPanel,toggleDrawer} = useContext(AppContext)
+  const {openCartPanel,setOpenCartPanel,toggleDrawer,isLogin,setIsLogin} = useContext(AppContext)
   return (
     <header className="bg-white fixed z-500 w-full">
       <div className="top-strip py-2 border-t border-b border-gray-200 text-[#3E3E3E]">
@@ -69,15 +73,29 @@ function Header() {
           </div>
           <div className="col3 w-[30%] flex items-center justify-end ">
             <ul className="flex items-center gap-5">
+              {
+                isLogin === true ? (
               <li className="list-none text-[#3E3E3E] hidden lg:block">
                 <Link to={"/login"} className="link text-[16px] ">
                   Login
-                </Link>{" "}
+                </Link>
                 <span className="pr-4">|</span>{" "}
                 <Link to={"/register"} className="link text-[16px]">
                   Register
                 </Link>
               </li>
+                ):(
+                  <li className="list-none text-[#3E3E3E] hidden lg:block relative group transition-all duration-500">
+                    <Link  className=" text-[22px] flex items-center gap-2 "><FaRegUserCircle className="link"/> <span className="text-[14px] flex flex-col"><span>Amir Ali Amin</span><span className="text-[10px]">aliaminamir@gmail.com</span></span></Link>
+                    <div className="absolute bg-white w-full max-w-full shadow-md z-10 p-2   text-center hidden group-hover:block transition-all duration-500 rounded-md">
+                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1"><FaRegUserCircle /><Link to={'my-account'}>Account</Link></li>
+                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1 "><IoBagHandleSharp/><Link>Order</Link></li>
+                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1 "><FaThList/><Link to={'my-list'}>My List</Link></li>
+                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1"><HiOutlineLogout/><Link>Logout</Link></li>
+                    </div>
+                  </li>
+                )
+              }
               <li className="list-none text-[#3E3E3E] relative group ">
                 <Link className="link text-[16px] flex items-center relative">
                   <GoGitCompare className="text-[20px]" />{" "}
