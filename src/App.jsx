@@ -12,6 +12,7 @@ import Verify from "./pages/auth/Verify";
 import toast, { Toaster } from 'react-hot-toast';
 import ForgetPassword from "./pages/auth/ForgetPassword";
 import Checkout from "./pages/cart/Checkout";
+import MyAccount from "./pages/myAccount/MyAccount";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/verifyAccount" element={<Verify/>} />
         <Route path="/forgetpassword" element={<ForgetPassword/>} />
         <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/my-account" element={<MyAccount/>} />
       </Routes>
       <Footer />
     </div>

@@ -87,6 +87,8 @@ function ProductCard({ id, name, brand, price, original, discount, category, ima
               className='bg-white h-fit  w-full max-w-3xl rounded-lg max-h-screen overflow-y-auto' 
               onClick={(e) => e.stopPropagation()}
             >
+              <div>
+
               {
                 selectedProductCard && (
                   <div className='p-6'>
@@ -132,6 +134,7 @@ function ProductCard({ id, name, brand, price, original, discount, category, ima
                   </div>
                 )
               }
+              </div>
             </div>
           </div>
         )

@@ -74,7 +74,7 @@ function CartDrawer() {
                 </div>
             </div>
             <div className='w-full flex justify-center gap-2'>
-                <button className='bg-primary py-2 px-8 hover:bg-red-100 hover:text-primary border border-primary cursor-pointer  text-white rounded-lg' onClick={()=>{navigate("/cart"), setOpenCartPanel(false)}}>View_Cart</button>
+                <button className='bg-primary py-2 px-8 hover:bg-red-100 hover:text-primary border border-primary cursor-pointer  text-white rounded-lg whitespace-nowrap' onClick={()=>{navigate("/cart"), setOpenCartPanel(false)}}>View Cart</button>
                 <button className='bg-primary py-2 px-8 hover:bg-red-100 hover:text-primary border border-primary cursor-pointer  text-white rounded-lg' onClick={()=>navigate("/checkout")}>CheckOut</button>
             </div>
            </div>

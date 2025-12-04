@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Search from "../search/Search";
 import { FaRegHeart } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
@@ -19,7 +19,8 @@ import { HiOutlineLogout } from "react-icons/hi";
 function Header() {
   const [boxOpen, setBoxOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(null);
-  const {openCartPanel,setOpenCartPanel,toggleDrawer,isLogin,setIsLogin} = useContext(AppContext)
+  const {openCartPanel,setOpenCartPanel,toggleDrawer,isLogin,setIsLogin,setActiveTab} = useContext(AppContext);
+  const navigate = useNavigate()
   return (
     <header className="bg-white fixed z-500 w-full">
       <div className="top-strip py-2 border-t border-b border-gray-200 text-[#3E3E3E]">
@@ -85,14 +86,14 @@ function Header() {
                 </Link>
               </li>
                 ):(
-                  <li className="list-none text-[#3E3E3E] hidden lg:block relative group transition-all duration-500">
-                    <Link  className=" text-[22px] flex items-center gap-2 "><FaRegUserCircle className="link"/> <span className="text-[14px] flex flex-col"><span>Amir Ali Amin</span><span className="text-[10px]">aliaminamir@gmail.com</span></span></Link>
-                    <div className="absolute bg-white w-full max-w-full shadow-md z-10 p-2   text-center hidden group-hover:block transition-all duration-500 rounded-md">
-                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1"><FaRegUserCircle /><Link to={'my-account'}>Account</Link></li>
-                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1 "><IoBagHandleSharp/><Link>Order</Link></li>
-                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1 "><FaThList/><Link to={'my-list'}>My List</Link></li>
+                  <li className="list-none text-[#3E3E3E]  relative group transition-all duration-500">
+                    <Link  className=" text-[22px] flex items-center gap-2 "><FaRegUserCircle className="link"/> <span className="text-[14px]  flex-col hidden md:flex"><span>Amir Ali Amin</span><span className="text-[10px]">aliaminamir@gmail.com</span></span></Link>
+                    <ul className="absolute bg-white w-[100px] max-w-[100px] shadow-md z-1000 p-2   text-center  border  hidden group-hover:block transition-all duration-500 rounded-md">
+                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1"><FaRegUserCircle /><p onClick={()=>{navigate('/my-account'), setActiveTab("account")}}>Account</p></li>
+                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1 "><IoBagHandleSharp/><p  onClick={()=>{navigate('/my-account'), setActiveTab("order")}}>Order</p></li>
+                      <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1 "><FaThList/><p onClick={()=>{navigate('/my-account'), setActiveTab("list")}}>My List</p></li>
                       <li className="py-1 border-b border-gray-300 cursor-pointer link flex items-center gap-1"><HiOutlineLogout/><Link>Logout</Link></li>
-                    </div>
+                    </ul>
                   </li>
                 )
               }

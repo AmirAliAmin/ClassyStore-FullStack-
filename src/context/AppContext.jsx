@@ -6,7 +6,8 @@ const AppContextProvider = (props) => {
   const [openProductDetailModel, setOpenProductDetailModel] = useState(false);
   const [selectedProductCard, setSelectedProductCard] = useState(null);
   const [openCartPanel, setOpenCartPanel] = useState(false);
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(false);
+  const [activeTab, setActiveTab] = useState("account");
 
   // Fixed function names (removed typos)
   const handleClickOpenProductDetailModel = (card) => {
@@ -31,7 +32,8 @@ const AppContextProvider = (props) => {
     handleClickOpenProductDetailModel,  
     handleCloseOpenProductDetailModel,
     openCartPanel,setOpenCartPanel,toggleDrawer,
-    isLogin,setIsLogin
+    isLogin,setIsLogin,
+    activeTab, setActiveTab
   }
 
   return (
